@@ -1,0 +1,154 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.openmarkov</groupId>
+        <artifactId>org.openmarkov</artifactId>
+        <version>0.3.0-SNAPSHOT</version>
+        <relativePath>../org.openmarkov</relativePath>
+    </parent>
+
+    <artifactId>org.openmarkov.full</artifactId>
+    <version>0.3.0-SNAPSHOT</version>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.6.0</version>
+                    <configuration>
+                        <descriptorRefs>
+                            <descriptorRef>jar-with-dependencies</descriptorRef>
+                        </descriptorRefs>
+                        <archive>
+                            <manifest>
+                                <mainClass>org.openmarkov.full.OpenMarkov</mainClass>
+                            </manifest>
+                        </archive>
+                        <appendAssemblyId>true</appendAssemblyId>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                    <executions>
+                        <execution><!-- MLUQUE: I do not know if this block is necessary -->
+                            <id>make-assembly</id> <!-- this is used for inheritance merges -->
+                            <phase>package</phase> <!-- bind to the packaging phase -->
+                            <goals>
+                                <goal>single</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.openmarkov</groupId>
+            <artifactId>org.openmarkov.gui</artifactId>
+            <version>0.3.0-SNAPSHOT</version>
+        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.openmarkov</groupId>-->
+        <!--<artifactId>org.openmarkov.core</artifactId>-->
+        <!--<version>0.3.0-SNAPSHOT</version>-->
+        <!--<scope>test</scope>-->
+        <!--<type>test-jar</type>-->
+        <!--</dependency>-->
+
+        <!-- Plugins -->
+        <dependency>
+            <groupId>org.openmarkov</groupId>
+            <artifactId>org.openmarkov.costEffectiveness</artifactId>
+            <version>0.3.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openmarkov</groupId>
+            <artifactId>org.openmarkov.sensitivityAnalysis</artifactId>
+            <version>0.3.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openmarkov</groupId>
+            <artifactId>org.openmarkov.dbGenerator</artifactId>
+            <version>0.3.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openmarkov</groupId>
+            <artifactId>org.openmarkov.bnEvaluation</artifactId>
+            <version>0.3.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openmarkov</groupId>
+            <artifactId>org.openmarkov.stochasticPropagationOutput</artifactId>
+            <version>0.3.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openmarkov</groupId>
+            <artifactId>org.openmarkov.io.database.elvira</artifactId>
+            <version>0.3.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openmarkov</groupId>
+            <artifactId>org.openmarkov.io</artifactId>
+            <version>0.3.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openmarkov</groupId>
+            <artifactId>org.openmarkov.io.database.weka</artifactId>
+            <version>0.3.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openmarkov</groupId>
+            <artifactId>org.openmarkov.learning.algorithm</artifactId>
+            <version>0.3.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openmarkov</groupId>
+            <artifactId>org.openmarkov.learning.gui</artifactId>
+            <version>0.3.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openmarkov</groupId>
+            <artifactId>org.openmarkov.learning.metric</artifactId>
+            <version>0.3.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openmarkov</groupId>
+            <artifactId>org.openmarkov.inference</artifactId>
+            <version>0.3.0-SNAPSHOT</version>
+        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.openmarkov</groupId>-->
+        <!--<artifactId>org.openmarkov.evaluation</artifactId>-->
+        <!--<version>0.3.0-SNAPSHOT</version>-->
+        <!--<scope>test</scope>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+        <!--<groupId>org.openmarkov</groupId>-->
+        <!--<artifactId>org.openmarkov.utilityCalculator</artifactId>-->
+        <!--<version>0.3.0-SNAPSHOT</version>-->
+        <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.openmarkov</groupId>-->
+        <!--<artifactId>org.openmarkov.objectOrientedNetworks</artifactId>-->
+        <!--<version>0.3.0-SNAPSHOT</version>-->
+        <!--<scope>test</scope>-->
+        <!--</dependency>-->
+
+    </dependencies>
+</project>
