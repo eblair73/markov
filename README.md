@@ -68,6 +68,62 @@ You are now ready to build and run the application. Continue with the **Quick St
 
 ---
 
+## Installing Java and Maven (Mac)
+
+This project requires Java 21 and Maven 3.8 or higher. Follow these steps to set them up cleanly on a Mac using [Homebrew](https://brew.sh).
+
+### Step 1 — Install Homebrew (if you don't have it)
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+### Step 2 — Remove any existing Java installations
+
+Other Java variants (such as OpenJDK installed via Homebrew) can conflict. First, see what is installed:
+
+```bash
+brew list | grep -i java
+```
+
+Uninstall each entry you see. For example, if the output includes `openjdk` and `openjdk@17`, run:
+
+```bash
+brew uninstall openjdk openjdk@17
+```
+
+Replace the package names with whatever `brew list` actually showed. If nothing appeared, skip this step.
+
+### Step 3 — Install Java 21
+
+```bash
+brew install --cask temurin@21
+```
+
+This installs Eclipse Temurin 21 (a production-ready OpenJDK distribution). Verify it:
+
+```bash
+java -version
+```
+
+You should see output containing `21`.
+
+### Step 4 — Install Maven
+
+```bash
+brew install maven
+```
+
+Verify it:
+
+```bash
+mvn -version
+```
+
+You should see `Apache Maven 3.8` or higher.
+
+---
+
 ## Quick Start
 
 ### Requirements
@@ -86,21 +142,35 @@ mvn -version    # must say 3.8 or higher
 
 ### Build
 
+The project is a flat multi-module Maven layout. All modules are siblings inside `markov/` — the parent POM does not declare them, so you must build in two steps.
+
+**Step 1 — install the parent POM** (only needed once, or after pulling parent changes):
+
 ```bash
-cd org.openmarkov
-mvn clean install
+cd markov/org.openmarkov
+mvn install -DskipTests
+cd ..
 ```
 
-The first run downloads dependencies (~150 MB). To skip tests for a faster build:
+**Step 2 — build the executable JAR:**
 
 ```bash
-mvn clean install -DskipTests
+cd markov/org.openmarkov.full
+mvn clean package -DskipTests
+```
+
+Maven resolves the other module artifacts (core, gui, inference, etc.) from the configured Nexus snapshot repository. The first run downloads dependencies (~150 MB). The finished JAR will be at:
+
+```
+org.openmarkov.full/target/openmarkov-full-0.3.0-SNAPSHOT-jar-with-dependencies.jar
 ```
 
 ### Run
 
+From inside the `org.openmarkov.full` directory:
+
 ```bash
-java -jar org.openmarkov.full/target/openmarkov-full-0.3.0-SNAPSHOT-jar-with-dependencies.jar
+java -jar target/org.openmarkov.full-0.3.0-SNAPSHOT-jar-with-dependencies.jar
 ```
 
 Optional flags:
