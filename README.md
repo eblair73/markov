@@ -66,6 +66,24 @@ cd markov
 
 You are now ready to build and run the application. Continue with the **Quick Start** steps below.
 
+### Updating the code later
+
+After the initial clone, you do not need to clone again. To pull down the latest changes from GitHub, open Terminal, navigate to the `markov` folder, and run:
+
+```bash
+cd ~/Desktop/markov
+git pull
+```
+
+If you have local changes that conflict with what is on GitHub, Git will tell you. The safest way to discard any local edits and fully reset to the latest version on GitHub is:
+
+```bash
+git fetch origin
+git reset --hard origin/develop
+```
+
+> **Warning:** `git reset --hard` permanently discards any uncommitted local changes. Only use it if you are sure you do not need them.
+
 ---
 
 ## Installing Java and Maven (Mac)
