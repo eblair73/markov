@@ -18,6 +18,56 @@ It provides both a point-and-click graphical interface and a Java programming AP
 
 ---
 
+## Getting the Code (Mac)
+
+These steps walk you through downloading the project onto your Mac for the first time, even if you have never used Git before.
+
+### Step 1 — Install Git
+
+Git is the tool used to download the code. To check if you already have it, open the **Terminal** app (search for "Terminal" in Spotlight with Cmd+Space) and run:
+
+```bash
+git --version
+```
+
+If you see a version number, Git is already installed — skip to Step 2.
+
+If you see a pop-up asking you to install the **Command Line Developer Tools**, click **Install** and wait for it to finish. Once done, run `git --version` again to confirm.
+
+If no pop-up appeared, install Git manually by running:
+
+```bash
+xcode-select --install
+```
+
+### Step 2 — Choose a folder
+
+Decide where on your Mac you want to save the project. Your home folder or Desktop are common choices. In Terminal, navigate there. For example, to go to your Desktop:
+
+```bash
+cd ~/Desktop
+```
+
+### Step 3 — Clone the repository
+
+Run the following command to download the project into a new folder called `markov`:
+
+```bash
+git clone https://github.com/eblair73/markov.git
+```
+
+This creates a `markov` folder containing all the source code. You only need to do this once.
+
+### Step 4 — Enter the project folder
+
+```bash
+cd markov
+```
+
+You are now ready to build and run the application. Continue with the **Quick Start** steps below.
+
+---
+
 ## Quick Start
 
 ### Requirements
